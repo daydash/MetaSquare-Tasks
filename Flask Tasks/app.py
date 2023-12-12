@@ -26,7 +26,7 @@ def index():
 def hello(name):
     return f"Hello, {escape(name)}!"
 
-@app.route('/testGithubLogin') 
+@app.route('/   ') 
 def query_example(): 
     username = request.args.get("username")
     password = request.args.get("password")
