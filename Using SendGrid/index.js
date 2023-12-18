@@ -1,6 +1,8 @@
 const cron = require("node-cron");
 const nodemailer = require("nodemailer");
 
+require("dotenv").config();
+
 // Create a nodemailer transporter
 const transporter = nodemailer.createTransport({
 	host: "smtp.gmail.com",
@@ -8,20 +10,19 @@ const transporter = nodemailer.createTransport({
 	secure: true, // Use secure connection (SSL/TLS)
 	service: "gmail",
 	auth: {
-		user: "@gmail.com", // Your email address
-		pass: "", // Your email password or app-specific password
+		user: process.env.USER, // Your email address
+		pass: process.env.PASS, // Your email password or app-specific password
 	},
 });
 
 // Define the email options
 const mailOptions = {
-	from: "mailmetametrics@gmail.com", // Sender's email address
-	to: "yashbhatnagar88@gmail.com", // Receiver's email address
-	subject: "Cron Job Email",
+	from: process.env.USER, // Sender's email address
+	to: process.env.TO, // Receiver's email address
+	subject: "Hahahaha",
 	text: "This is a scheduled email sent using Node.js and cron jobs.",
 };
 
-// Schedule the cron job to send the email every day at 8:00 AM
 cron.schedule(
 	"* * * * * *",
 	() => {
@@ -33,11 +34,11 @@ cron.schedule(
 				console.log("Email sent:", info.response);
 			}
 		});
-	},
-	{
-		scheduled: true,
-		timezone: "America/New_York", // Set your timezone, e.g., 'America/New_York'
 	}
+	// {
+	// 	scheduled: true,
+	// 	timezone: "America/New_York", // Set your timezone, e.g., 'America/New_York'
+	// }
 );
 
 console.log("Cron job started");

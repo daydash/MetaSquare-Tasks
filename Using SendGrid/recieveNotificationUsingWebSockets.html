@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Socket.IO Client</title>
+	</head>
+	<body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.1/socket.io.js"></script>
+		<script>
+			const socket = io("http://127.0.0.1:5000");
+			let count = 0;
+			// Listen for notifications
+			socket.on("notification", (message) => {
+				console.log(
+					`${++count}. Notification received from server: ${message}`
+				);
+				// Handle the notification as needed (e.g., display it to the user)
+			});
+		</script>
+	</body>
+</html>
