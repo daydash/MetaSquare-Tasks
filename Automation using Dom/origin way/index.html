@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Page 1</title>
+	</head>
+	<body>
+		<button onclick="redirectToNextPage()">Redirect to Page 2</button>
+		<script>
+			function redirectToNextPage() {
+				// Open a new window
+				var newWindow = window.open("/second.html", "_blank");
+
+				// Post a message to the new window
+				newWindow.postMessage("Hello from Page 1!", "*");
+				newWindow.postMessage(
+					"Hello from Page 1!",
+					"http://127.0.0.1:5500/second.html"
+				);
+				console.log("finished");
+			}
+		</script>
+	</body>
+</html>

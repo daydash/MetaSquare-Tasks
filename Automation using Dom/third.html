@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Next Page</title>
+	</head>
+	<body>
+		<h1>Third Page</h1>
+
+		<form id="myForm">
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required disabled />
+			<button type="button" id="editNameBtn" onclick="editName()">Edit</button>
+
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required disabled />
+			<button type="button" id="editEmailBtn" onclick="editEmail()">
+				Edit
+			</button>
+			<br />
+			<button type="button" onclick="saveEdit()">Save</button>
+		</form>
+
+		<script>
+			// Retrieve data from URL parameters
+			var urlParams = new URLSearchParams(window.location.search);
+			var name = urlParams.get("name");
+			var email = urlParams.get("email");
+
+			document.getElementById("name").defaultValue = name;
+			document.getElementById("email").defaultValue = email;
+
+			function editName() {
+				document.getElementById("name").disabled = false;
+				// document.getElementById("editNameBtn").innerHTML = "Done";
+			}
+
+			function editEmail() {
+				document.getElementById("email").disabled = false;
+				// document.getElementById("editEmailBtn").innerHTML = "Done";
+			}
+
+			function saveEdit() {
+				var formData = new FormData(document.getElementById("myForm"));
+				if (formData.get("name") !== null) {
+					name = formData.get("name");
+				}
+
+				if (formData.get("email") !== null) {
+					email = formData.get("email");
+				}
+				// Construct the URL with form data as parameters
+				var url =
+					"/end.html?" +
+					"name=" +
+					encodeURIComponent(name) +
+					"&email=" +
+					encodeURIComponent(email);
+
+				// Redirect to the next page
+				window.location.href = url;
+			}
+		</script>
+	</body>
+</html>

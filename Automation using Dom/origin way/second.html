@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Page 2</title>
+	</head>
+	<body>
+		<script>
+			// Listen for messages from the parent window
+			window.addEventListener("message", function (event) {
+				console.log(event, "event");
+				// console.log(window.location.origin);
+
+				// Check the origin of the message (for security)
+				if (event.origin !== window.location.origin) {
+					return;
+				}
+
+				// Do something with the received message
+				// console.log("Message received: " + JSON.stringify(event.data));
+			});
+		</script>
+	</body>
+</html>

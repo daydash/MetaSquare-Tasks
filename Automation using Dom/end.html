@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Next Page</title>
+	</head>
+	<body>
+		<h1>End Page</h1>
+
+		<script>
+			// Retrieve data from URL parameters
+			var urlParams = new URLSearchParams(window.location.search);
+			var name = urlParams.get("name");
+			var email = urlParams.get("email");
+
+			// Display the data
+			document.body.innerHTML += "<p>Name: " + name + "</p>";
+			document.body.innerHTML += "<p>Email: " + email + "</p>";
+		</script>
+	</body>
+</html>
