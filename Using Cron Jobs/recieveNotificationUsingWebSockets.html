@@ -8,7 +8,7 @@
 	<body>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.1/socket.io.js"></script>
 		<script>
-			const socket = io("http://127.0.0.1:5000");
+			const socket = io("https://cron-job-send-notification.onrender.com");
 			let count = 0;
 			// Listen for notifications
 			socket.on("notification", (message) => {
